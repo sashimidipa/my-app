@@ -1,31 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 
-import './index.css';
+import './index.css'
+import {books} from './books'
+import Book from './Book'
 
 const BookList = () => {
-    return <section className='booklist'>
-    <Book />
-    <Book />
-    <Book />
-    <Book />
-    <Book />
-    </section>
-}
-const Book = () => {
-    return(
-        <article className='book'>
-            <Image />
-            <Title />
-            <Author />
-        </article>
-    );
+  return (
+    <>
+      <h1>Amazon Best Sellers</h1>
+      <section className="booklist">
+        {books.map((book, index) => {
+          return <Book {...book} key={book.id} number={index} />;
+        })}       
+      </section>
+    </>
+  )
 }
 
-const Image = () => <img src="./images/book-1.jpg" alt="Atomic Habits" />;
-const Title = () => <h2>Atomic Habits</h2>;
-const Author = () => {
-    return <h4>James Clear</h4>}
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'))
 
-root.render(<BookList />);
+root.render(<BookList />)
